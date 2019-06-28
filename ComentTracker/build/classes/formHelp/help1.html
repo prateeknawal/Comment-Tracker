@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Why we do not store passwords & login credentials ?</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body  bgcolor="#E6E6FA">
+        <H1>Why we do not store passwords & login credentials ?</H1>
+        <p> 
+   
+    I wouldn't know if they do (don't even use Facebook), but it's also possible that they use Hardware Security Modules (HSM) for their cryptoprocessing that don't store hashed passwords but merely reversibly encrypt them. With the volume of authorization requests they have to deal with, this would make perfect sense, as it's orders of magnitude faster than secure (read: slow) password hashing, while still offering safe password storage.
+
+    HSMs could then be programmed to compare stored and new password as an input of one of their functions and merely return result of it (could even be a boolean value in our case), with the original password never even transmitted or stored in plaintext anywhere, besides their internal memory (which is tamper resistant). This is usually referred to as an onboard secure key and application storage/processing.
+
+    By the way, many banks use HSMs because a proper implementation of it also requires physical security for the devices themselves and the way they're accessed (plus, they are rather costly), but this obviously provides a great deal more flexibility in the way passwords can be processed securely without them ever being disclosed.
+        </p>
+    </body>
+</html>
